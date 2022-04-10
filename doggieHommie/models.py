@@ -21,4 +21,7 @@ class Usuario(models.Model):
     contrasenia = models.CharField(max_length=40)
     estado = models.CharField(max_length=40)
 
-
+class Prueba2 (models.Model):
+    holi = models.CharField(max_length=40)
+    prueba = models.CharField(max_length=40)
+    kk = models.CharField(max_length=40)
