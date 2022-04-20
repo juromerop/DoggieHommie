@@ -36,6 +36,7 @@ class Veterinary(models.Model):
     fecha_registro = models.DateField()
     calificacion = models.FloatField()
     numero_tarjeta_profesional = models.IntegerField()
+    associated_user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
     
     def __str__(self):
         return str(self.numero_tarjeta_profesional)
@@ -91,6 +92,15 @@ class Functionality(models.Model):
     class Meta:
         verbose_name = 'funcionalidad'
         verbose_name_plural = "funcionalidades"
+        
+
+# class Solicitud(models.Model):
+#     title = models.CharField(max_length=120)
+#     description = models.TextField()
+#     banksAccountList = models.
+#     telephoneList
+#      título, descripción, lista de cuentas bancarias, números celulares, fotos adjuntas, documentos adjuntos.
+
 
 
 
