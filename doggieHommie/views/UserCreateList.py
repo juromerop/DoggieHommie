@@ -10,4 +10,5 @@ class UserCreateListView(generics.ListCreateAPIView):
     def post(self, resquest, *args, **kwargs):
         resquest.data["estado"] = "HABILITADO"
         return super().post(resquest, *args, **kwargs)
+    
         
