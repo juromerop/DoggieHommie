@@ -1,3 +1,8 @@
+from cgitb import text
+from datetime import date
+from distutils import extension
+from pyexpat import model
+from turtle import title
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -91,6 +96,49 @@ class Functionality(models.Model):
     class Meta:
         verbose_name = 'funcionalidad'
         verbose_name_plural = "funcionalidades"
+
+class Post(models.Model):
+    title = models.CharField(max_length = 120)
+    text = models.TextField()
+    date = models.DateField()
+    grade = models.IntegerField()
+
+    def __str__(self):
+        #return str(self.)
+        pass
+    
+    class Meta: 
+        pass
+
+class Comment(models.Model):
+    text = models.TextField()
+    date = models.DateField()
+    
+
+    def __str__(self):
+        #return str(self.)
+        pass
+    
+
+class Image(models.Model):
+    #id
+    name = models.CharField(max_length=60)
+    extension = models.CharField(max_length=10)
+    file = models.ImageField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
+    def __str__(self):
+        #return str(self.)
+        pass
+    
+    
+
+
+
+
+
+
 
 
 
