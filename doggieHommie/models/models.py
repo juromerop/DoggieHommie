@@ -47,7 +47,7 @@ class Veterinary(models.Model):
         return str(self.numero_tarjeta_profesional)
     
     class Meta:
-        verbose_name = 'Veterinario'
+        verbose_name = 'Veterinario' 
         verbose_name_plural = "Veterinarios"
 
 class Speciality(models.Model):
@@ -109,29 +109,46 @@ class Functionality(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length = 120)
-    text = models.TextField()
+    description = models.TextField()
     date = models.DateField()
     grade = models.IntegerField()
+    isDonation = models.BooleanField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    #banck_accounts_list : pienso que puede ser una lista de 2-tuplas, donde cada 2-tupla sea (nombre banco, # cuenta)
+
+    
 
     def __str__(self):
-        #return str(self.)
+        #return str(self.title)
         pass
     
     class Meta: 
         pass
 
+
+class BankAccounts(models.Model):
+    bank_name = models.CharField(max_length=120)
+    account_number = models.CharField(max_length=60)
+    #post =  models.ManyToManyField(Post,blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    
+
+
+
 class Comment(models.Model):
     text = models.TextField()
     date = models.DateField()
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     
 
     def __str__(self):
-        #return str(self.)
+        #return str(self.user + ": " + self.text )
         pass
     
 
 class Image(models.Model):
-    #id
+    
     name = models.CharField(max_length=60)
     extension = models.CharField(max_length=10)
     file = models.ImageField()
@@ -139,7 +156,7 @@ class Image(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
     def __str__(self):
-        #return str(self.)
+        #return str(self.name)
         pass
     
     
