@@ -1,0 +1,12 @@
+.fondo_mitad_derecho{
+    background: linear-gradient(180deg, #44CCCC 0%, rgba(76, 44, 206, 0.93) 100%);
+    border-radius: 20px;
+}
+
+#form-content {
+    width: 75%;
+    position: absolute;
+    left: 10%;
+    top: 25vh;
+    text-align: left;
+}
