@@ -14,6 +14,9 @@ import { HeadbarComponent } from './components/headbar/headbar.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    HeadbarComponent
   ]
 })
 export class SharedModule { }
