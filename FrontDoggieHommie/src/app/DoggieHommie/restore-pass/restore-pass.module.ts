@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './pages/home/home.component';
+import { RestorePassComponent } from './pages/restore-pass/restore-pass.component';
 
 
 
 @NgModule({
   declarations: [
-    HomeComponent
+    RestorePassComponent
   ],
   imports: [
     CommonModule
   ]
 })
-export class HomeModule { }
+export class RestorePassModule { }
