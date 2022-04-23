@@ -9,4 +9,15 @@
     left: 10%;
     top: 25vh;
     text-align: left;
+    margin: 5px;
+}
+
+.bton{
+    background: #C6AB7C;
+    border: None;
+    border-radius: 8px;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: large;
 }

@@ -2,8 +2,11 @@
 <div class="container-fluid overflow-auto" style="margin: 0px; padding: 0px;">
   <div class="container-fluid overflow-auto" style="height: 100vh; margin: 0; padding: 3%; background: #dcdbdb; min-height: 300px">
     <div class="shadow-lg row" style="height: auto; min-height: 100%; border-radius: 20px; background-color: white;">
-        <div class="col-6 col-md-6 align-self-center">
-          <h3 >Inicia Sesión</h3>
+        <div class="col-6 col-md-6 align-self-center" style="padding: 5%;">
+          <p class="text-center fs-1 "> Inicia Sesión </p>
+          <br>
+          <br>
+
           <!-- Inicio Formulario -->
           <form method="post">
     
@@ -15,7 +18,7 @@
                 </p>
                 {% endif%} -->
     
-                <input type="text" 
+                <input type="email" 
                         class="form-control" 
                         id="input_dni" 
                         aria-describedby="dni_help"
@@ -23,15 +26,16 @@
                         name="username">
     
                 <input type="password" 
-                        class="form-control" 
+                        class="form-control mt-2" 
                         id="teacher_password" 
                         aria-describedby="dni_help"
                         placeholder="Contraseña" 
                         name="password">
-                <input type="submit" class="btn-primary botones" value="Ingresar">
+                <input type="submit" class="btn-primary bton" value="Ingresar">
                 
               </div>
             </form>
+            <button type="button">Inicia con google</button>
             <div class="text-center" style="margin-top: 15px">
                 <a href=" RECOVEY PASSWORD" class="users-redirect-link">¿Olvidaste tu contraseña?</a>
             </div>
