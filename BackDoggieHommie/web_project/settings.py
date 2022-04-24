@@ -27,7 +27,8 @@ SECRET_KEY = 'fb(m5z7y8$bmrnii$gp1d@#bv+-xk7s27enz+%%wxgfkm*i0$j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+CORS_ALLOW_ALL_ORIGINS = True
 
 
 # Application definition
@@ -42,6 +43,8 @@ INSTALLED_APPS = [
     'doggieHommie',
     'rest_framework',
     'rest_framework_simplejwt',
+    'corsheaders',
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 SIMPLE_JWT = {
