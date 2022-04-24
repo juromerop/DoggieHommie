@@ -1,59 +1,86 @@
+<div class="container-fluid overflow-auto" style="margin: 0px; padding: 0px">
+  <div
+    class="container-fluid overflow-auto"
+    style="
+      height: 100vh;
+      margin: 0;
+      padding: 3%;
+      background: #dcdbdb;
+      min-height: 300px;
+    "
+  >
+    <div
+      class="shadow-lg row"
+      style="
+        height: auto;
+        min-height: 100%;
+        border-radius: 20px;
+        background-color: white;
+      "
+    >
+      <div class="col-6 col-md-6 align-self-center" style="padding: 5%">
+        <p class="text-center fs-1">Inicia Sesión</p>
+        <br />
+        <br />
 
-<div class="container-fluid overflow-auto" style="margin: 0px; padding: 0px;">
-  <div class="container-fluid overflow-auto" style="height: 100vh; margin: 0; padding: 3%; background: #dcdbdb; min-height: 300px">
-    <div class="shadow-lg row" style="height: auto; min-height: 100%; border-radius: 20px; background-color: white;">
-        <div class="col-6 col-md-6 align-self-center" style="padding: 5%;">
-          <p class="text-center fs-1 "> Inicia Sesión </p>
-          <br>
-          <br>
-
-          <!-- Inicio Formulario -->
-          <form method="post">
-    
-            <div class="form-group text-start" style="">
-    
-<!--                 {% if form.errors %}
+        <!-- Inicio Formulario -->
+        <!-- <form method="post"> -->
+        <form formGroup="checkoutForm">
+          <div class="form-group text-start">
+            <!--                 {% if form.errors %}
                 <p class="alert alert-danger">
                     Your username and password didn't match. Please try again.
                 </p>
                 {% endif%} -->
-    
-                <input type="email" 
-                        class="form-control" 
-                        id="input_dni" 
-                        aria-describedby="dni_help"
-                        placeholder="Correo electronico" 
-                        name="username">
-    
-                <input type="password" 
-                        class="form-control mt-2" 
-                        id="teacher_password" 
-                        aria-describedby="dni_help"
-                        placeholder="Contraseña" 
-                        name="password">
-                <input type="submit" class="btn-primary bton" value="Ingresar">
-                
-              </div>
-            </form>
-            <button type="button">Inicia con google</button>
-            <div class="text-center" style="margin-top: 15px">
-                <a href=" RECOVEY PASSWORD" class="users-redirect-link">¿Olvidaste tu contraseña?</a>
-            </div>
 
+            <input
+              type="email"
+              class="form-control"
+              id="input_dni"
+              aria-describedby="dni_help"
+              placeholder="Correo electronico"
+              name="username"
+            />
+
+            <input
+              type="password"
+              class="form-control mt-2"
+              id="teacher_password"
+              aria-describedby="dni_help"
+              placeholder="Contraseña"
+              name="password"
+            />
+            <input type="submit" class="btn-primary bton" value="Ingresar" />
+          </div>
+        </form>
+        <button type="button">Inicia con google</button>
+        <div class="text-center" style="margin-top: 15px">
+          <a href=" RECOVEY PASSWORD" class="users-redirect-link"
+            >¿Olvidaste tu contraseña?</a
+          >
         </div>
+      </div>
 
-          <!-- Fin Formulario -->
-          
-        <div class="col-6 d-none d-md-block fondo_mitad_derecho" id="div_derecho_users">
-            <!--style="height: 100%;-->
-            <div class="row  justify-content-md-center" style="align-items: center; height: 100%; text-align: center;">
-                <img alt="ProEs Logo" src="../assets/4.png" style="height: 40%; width: auto;">
-            </div>
+      <!-- Fin Formulario -->
 
+      <div
+        class="col-6 d-none d-md-block fondo_mitad_derecho"
+        id="div_derecho_users"
+      >
+        <!--style="height: 100%;-->
+        <div
+          class="row justify-content-md-center"
+          style="align-items: center; height: 100%; text-align: center"
+        >
+          <img
+            alt="ProEs Logo"
+            src="../assets/4.png"
+            style="height: 40%; width: auto"
+          />
         </div>
+      </div>
       <!-- <app-headbar></app-headbar>
       <router-outlet></router-outlet> -->
+    </div>
   </div>
 </div>
-
-
