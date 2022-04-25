@@ -10,18 +10,9 @@ from django.contrib.auth.models import User
 class User(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name="nurse",null=True)
-    TIPO_DOCUMENTOS = (
-        ('CC', 'Cédula de ciudadanía'),
-        ('TI', 'Tarjeta de identidad'),
-        ('CE', 'Cédula de extrajería'),
-    )
-    second_name = models.CharField(max_length=30)
-    second_lastname = models.CharField(max_length=30)
     telefono = models.CharField(max_length=10)
-    tipo_documento = models.CharField(max_length=30, choices= TIPO_DOCUMENTOS)
     numero_documento = models.CharField(max_length=10)
     pais = models.CharField(max_length=40)
-    departamento = models.CharField(max_length=40)
     ciudad = models.CharField(max_length=40)
     estado = models.CharField(max_length=40)
     
