@@ -10,5 +10,8 @@ urlpatterns = [
     path('user/<int:pk>', UserRUDView.as_view()),
     path('login', TokenObtainPairView.as_view()),
     path('refresh', TokenRefreshView.as_view()),
+    path('post/', PostCreateListView.as_view()),
+    path('bankAccount/create', BankAccountCreateListView.as_view()),
+    path('bankAccount/<int:pk>', BankAccountCreateListView.as_view()),
     
 ]

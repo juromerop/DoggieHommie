@@ -9,12 +9,12 @@ from django.contrib.auth.models import User
 #Se crea entidad usuario
 class User(models.Model):
     user = models.OneToOneField(
-        User, on_delete=models.CASCADE, related_name="nurse",null=True)
-    telefono = models.CharField(max_length=10)
-    numero_documento = models.CharField(max_length=10)
-    pais = models.CharField(max_length=40)
-    ciudad = models.CharField(max_length=40)
-    estado = models.CharField(max_length=40)
+        User, on_delete=models.CASCADE, related_name = "nurse",null=True)
+    telefono = models.CharField(max_length = 10)
+    numero_documento = models.CharField(max_length = 10)
+    pais = models.CharField(max_length = 40)
+    ciudad = models.CharField(max_length = 40)
+    estado = models.CharField(max_length = 40)
     
     def __str__(self):
         return str(self.numero_documento)
@@ -28,11 +28,11 @@ class User(models.Model):
 
 class Veterinary(models.Model):
     fecha_graduacion = models.DateField()
-    universidad = models.CharField(max_length= 60)
+    universidad = models.CharField(max_length = 60)
     fecha_registro = models.DateField()
     calificacion = models.FloatField()
     numero_tarjeta_profesional = models.IntegerField()
-    associated_user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
+    associated_user = models.ForeignKey(User, on_delete = models.CASCADE,null = True)
     
     def __str__(self):
         return str(self.numero_tarjeta_profesional)
@@ -42,9 +42,9 @@ class Veterinary(models.Model):
         verbose_name_plural = "Veterinarios"
 
 class Speciality(models.Model):
-    nombre = models.CharField(max_length= 60)
-    descripcion =  models.CharField(max_length= 90)
-    veterinaries = models.ManyToManyField(Veterinary,blank=True)
+    nombre = models.CharField(max_length = 60)
+    descripcion =  models.CharField(max_length = 90)
+    veterinaries = models.ManyToManyField(Veterinary,blank = True)
     
     def __str__(self):
         return str(self.nombre)
@@ -54,10 +54,10 @@ class Speciality(models.Model):
         verbose_name_plural = "Especialidades"
 
 class Veterinary_files(models.Model):
-    nombre = models.CharField(max_length= 60)
-    extension = models.CharField(max_length= 60)
-    archivo = models.CharField(max_length= 1000)
-    veterinary = models.ForeignKey(Veterinary, on_delete=models.CASCADE)
+    nombre = models.CharField(max_length = 60)
+    extension = models.CharField(max_length = 60)
+    archivo = models.CharField(max_length = 1000)
+    veterinary = models.ForeignKey(Veterinary, on_delete = models.CASCADE)
     
     def __str__(self):
         return str(self.nombre)
@@ -67,9 +67,9 @@ class Veterinary_files(models.Model):
         verbose_name_plural = "archivos_vet"
 
 class Rol(models.Model):
-    nombre = models.CharField(max_length= 60)
-    descripcion = models.CharField(max_length=100)
-    user = models.ManyToManyField(User,blank=True)
+    nombre = models.CharField(max_length = 60)
+    descripcion = models.CharField(max_length = 100)
+    user = models.ManyToManyField(User,blank = True)
     def __str__(self):
         return str(self.nombre)
     
@@ -81,7 +81,7 @@ class Functionality(models.Model):
     nombre = models.CharField(max_length = 60)
     url = models.CharField(max_length = 200)
     descripcion = models.CharField(max_length = 100)
-    rol = models.ManyToManyField(Rol,blank=True)
+    rol = models.ManyToManyField(Rol,blank = True)
     def __str__(self):
         return str(self.nombre)
     
@@ -104,7 +104,7 @@ class Post(models.Model):
     date = models.DateField()
     grade = models.IntegerField()
     isDonation = models.BooleanField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
     #banck_accounts_list : pienso que puede ser una lista de 2-tuplas, donde cada 2-tupla sea (nombre banco, # cuenta)
 
     
@@ -118,10 +118,11 @@ class Post(models.Model):
 
 
 class BankAccounts(models.Model):
-    bank_name = models.CharField(max_length=120)
-    account_number = models.CharField(max_length=60)
+    bank_name = models.CharField(max_length = 120)
+    account_number = models.CharField(max_length = 60)
     #post =  models.ManyToManyField(Post,blank=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
+    post = models.ForeignKey(Post, on_delete = models.CASCADE, null=True)
     
 
 
@@ -129,8 +130,8 @@ class BankAccounts(models.Model):
 class Comment(models.Model):
     text = models.TextField()
     date = models.DateField()
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete = models.CASCADE)
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
     
 
     def __str__(self):
@@ -140,11 +141,11 @@ class Comment(models.Model):
 
 class Image(models.Model):
     
-    name = models.CharField(max_length=60)
-    extension = models.CharField(max_length=10)
+    name = models.CharField(max_length = 60)
+    extension = models.CharField(max_length = 10)
     file = models.ImageField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
+    post = models.ForeignKey(Post, on_delete = models.CASCADE)
 
     def __str__(self):
         #return str(self.name)
