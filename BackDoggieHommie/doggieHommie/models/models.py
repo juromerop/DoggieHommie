@@ -95,17 +95,7 @@ class Functionality(models.Model):
 #     description = models.TextField()
 #     banksAccountList = models.
 #     telephoneList
-#      título, descripción, lista de cuentas bancarias, números celulares, fotos adjuntas, documentos adjuntos.
-
-
-class Post(models.Model):
-    title = models.CharField(max_length = 120)
-    description = models.TextField()
-    date = models.DateField()
-    grade = models.IntegerField()
-    isDonation = models.BooleanField()
-    user = models.ForeignKey(User, on_delete = models.CASCADE)
-    #banck_accounts_list : pienso que puede ser una lista de 2-tuplas, donde cada 2-tupla sea (nombre banco, # cuenta)
+#      título, descripción, lista de cuentas bancarias, números celulares, fotos adjuntas, documentos adjuntos.  
 
     
 
@@ -122,10 +112,17 @@ class BankAccounts(models.Model):
     account_number = models.CharField(max_length = 60)
     #post =  models.ManyToManyField(Post,blank=True)
     user = models.ForeignKey(User, on_delete = models.CASCADE)
-    post = models.ForeignKey(Post, on_delete = models.CASCADE, null=True)
+    bank_type = models.CharField(max_length = 40, null=True)
     
 
-
+class Post(models.Model):
+    title = models.CharField(max_length = 120)
+    description = models.TextField()
+    date = models.DateField()
+    grade = models.IntegerField()
+    isDonation = models.BooleanField()
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
+    bankAccounts = models.ManyToManyField(BankAccounts,blank = True)
 
 class Comment(models.Model):
     text = models.TextField()
@@ -151,6 +148,8 @@ class Image(models.Model):
         #return str(self.name)
         pass
     
+    
+
     
 
 
