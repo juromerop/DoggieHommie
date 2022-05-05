@@ -1,6 +1,7 @@
 
 from django.contrib import admin
 from django.urls import path
+from doggieHommie.views.UpdateUser import UpdateUserView
 from doggieHommie.views import *
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
@@ -13,5 +14,6 @@ urlpatterns = [
     path('post/', PostCreateListView.as_view()),
     path('bankAccount/create', BankAccountCreateListView.as_view()),
     path('bankAccount/<int:pk>', BankAccountCreateListView.as_view()),
+    path('userUpdate/<int:id>', UpdateUserView)
     
 ]
