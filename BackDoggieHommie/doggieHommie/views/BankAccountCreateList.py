@@ -8,3 +8,10 @@ class BankAccountCreateListView(generics.ListCreateAPIView):
     queryset = BankAccounts.objects.all()
     serializer_class = BankAccountSerializer
     
+    
+    def get_queryset(self):
+        user = self.kwargs['user']
+        return BankAccounts.objects.filter(user=user)
+    
+    
+    

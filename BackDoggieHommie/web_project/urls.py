@@ -11,8 +11,9 @@ urlpatterns = [
     path('login', LoginView.as_view()),
     path('refresh', TokenRefreshView.as_view()),
     path('bankAccount/create', BankAccountCreateListView.as_view()),
-    path('bankAccount/<int:pk>', BankAccountCreateListView.as_view()),
+    path('bankAccount/<int:user>', BankAccountCreateListView.as_view()),
     path('post/', PostCreateView.as_view()),
     path('post/RUD/<int:pk>', PostRUDView.as_view()), 
-    path('post/getAll', PostCreateListView.as_view()),  
+    path('post/getAll', PostCreateListView.as_view()), 
+    path('post/getByUser/<int:user>', PostByUserView().as_view()), 
 ]

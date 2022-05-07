@@ -17,6 +17,7 @@ class PostRUDView(generics.RetrieveUpdateDestroyAPIView):
             else:
                 data["state"] = "HABILITADO"
         return super().patch(request)
+
     
     
     

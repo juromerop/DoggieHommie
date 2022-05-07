@@ -6,3 +6,4 @@ from .BankAccountRUDView import BankAccountRUDView
 from .LoginView import LoginView
 from .PostCreateView import PostCreateView
 from .PostRUDView import PostRUDView
+from .PostByUserView import PostByUserView
