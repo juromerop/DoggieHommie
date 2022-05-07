@@ -121,6 +121,8 @@ class Post(models.Model):
     date = models.DateField()
     grade = models.IntegerField()
     isDonation = models.BooleanField()
+    state = models.CharField(max_length = 20, null = True)
+    number_banned = models.IntegerField( null = True)
     user = models.ForeignKey(User, on_delete = models.CASCADE)
     bankAccounts = models.ManyToManyField(BankAccounts,blank = True)
 
