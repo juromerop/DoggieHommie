@@ -16,4 +16,16 @@ class UserSerializer (serializers.ModelSerializer):
         userInstance = User.objects.create(**validated_data)
         return userInstance
     
+    def update(self, instance, validated_data):
+        instance.id = validated_data.get('id', instance.id)
+        instance.user = validated_data.get('user', instance.user)
+        instance.telefono = validated_data.get('telefono', instance.telefono)
+        instance.numero_documento = validated_data.get('numero_documento', instance.numero_documento)
+        instance.pais = validated_data.get('pais', instance.pais)
+        instance.ciudad = validated_data.get('ciudad', instance.ciudad)
+        instance.estado = validated_data.get('estado', instance.estado)
+        
+        instance.save()
+        return instance
+    
     
