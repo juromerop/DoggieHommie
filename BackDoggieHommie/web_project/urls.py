@@ -14,6 +14,6 @@ urlpatterns = [
     path('post/', PostCreateListView.as_view()),
     path('bankAccount/create', BankAccountCreateListView.as_view()),
     path('bankAccount/<int:pk>', BankAccountCreateListView.as_view()),
-    path('userUpdate/<int:id>', UpdateUserView)
+    path('updateUser', UpdateUserView)
     
 ]
