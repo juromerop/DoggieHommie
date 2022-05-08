@@ -15,3 +15,5 @@ class UserSerializer (serializers.ModelSerializer):
         validated_data["user"] = user
         userInstance = User.objects.create(**validated_data)
         return userInstance
+    
+    
