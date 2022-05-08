@@ -23,6 +23,7 @@ class UserDetailAPIView(APIView):
     
     def put(self, request, pk, format=None):
         user = self.get_object(pk)
+        print(user)
         print(request.data)
         serializer = UserSerializer(user, data=request.data)
         if serializer.is_valid():
