@@ -22,21 +22,22 @@ class PostCreateView(generics.GenericAPIView):
                     for bankAccount in bankAccounts:
                         if bankAccount['id'] == None:
                             reg = BankAccountSerializer(data=bankAccount) 
-                            if reg.is_valid():
+                            if reg.is_valid(raise_exception=True):
                                 saved = reg.save()
                                 accounts.append(saved.id)
                             else:
                                 raise Error("Error en validacion de datos")
                         else:
                             accounts.append(bankAccount['id'])
-                post["idbankAccount"] = accounts
+                post["idBankAccount"] = accounts
                 post["state"] = "HABILITADO"
                 post["number_banned"] = 0
                 reg = PostSerializer(data = post)
-                if reg.is_valid():
+                if reg.is_valid(raise_exception=True):
                     reg.save()
                 else:
-                    raise Error("Error en validacion de datos :c ")
+                    print(reg.is_valid())
+                    raise Error("Error en validacion de datos :c")
         except Error as e:
              return Response(data={"exitoso": False, "error": e.args[0] }, status=HTTP_400_BAD_REQUEST)
             
