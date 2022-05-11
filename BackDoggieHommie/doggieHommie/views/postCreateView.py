@@ -5,6 +5,7 @@ from doggieHommie.models import Post
 from rest_framework.response import Response
 from rest_framework.status import *
 from django.db import Error, transaction
+from datetime import datetime 
 
 
 
@@ -32,6 +33,8 @@ class PostCreateView(generics.GenericAPIView):
                 post["idBankAccount"] = accounts
                 post["state"] = "HABILITADO"
                 post["number_banned"] = 0
+                print(datetime.now().strftime("%Y-%m-%d"))
+                post["date"] = datetime.now().strftime("%Y-%m-%d")
                 reg = PostSerializer(data = post)
                 if reg.is_valid(raise_exception=True):
                     reg.save()
