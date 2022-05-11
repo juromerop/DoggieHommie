@@ -15,5 +15,5 @@ urlpatterns = [
     path('post/', PostCreateView.as_view()),
     path('post/RUD/<int:pk>', PostRUDView.as_view()), 
     path('post/getAll', PostCreateListView.as_view()), 
-    path('post/getByUser/<int:user>', PostByUserView().as_view()), 
+    path('post/getByUser/<int:user>', PostByUserView.as_view()), 
 ]
