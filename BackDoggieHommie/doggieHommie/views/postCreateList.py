@@ -5,9 +5,11 @@ from doggieHommie.models import Post
 
 
 class PostCreateListView(generics.ListCreateAPIView):
-    queryset = Post.objects.all()
+    queryset = Post.objects.filter(state = "HABILITADO")
     serializer_class = PostSerializer
     
-    def post(self, resquest, *args, **kwargs):
-        
+    def post(self, resquest, *args, **kwargs):      
         return super().post(resquest, *args, **kwargs)
+    
+        
+                 
