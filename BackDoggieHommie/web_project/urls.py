@@ -15,7 +15,7 @@ urlpatterns = [
     path('bankAccount/create', BankAccountCreateListView.as_view()),
     path('bankAccount/<int:pk>', BankAccountCreateListView.as_view()),
     # path('updateUser', UpdateUserView),
-    path('updateUser/<int:pk>', UserDetailAPIView.as_view())
+    path('updateUser/<int:pk>', UserRUDView.as_view())
 
     
 ]
