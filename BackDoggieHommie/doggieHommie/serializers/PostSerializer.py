@@ -15,7 +15,7 @@ class PostSerializer (serializers.ModelSerializer):
         
     class Meta:
         model = Post
-        fields =  ['title', 'description', 'date', 'grade', 'isDonation', 'state', 'number_banned', 
+        fields =  ['id','title', 'description', 'date', 'grade', 'isDonation', 'state', 'number_banned', 
                    'user', 'bankAccounts', 'idBankAccount', 'userData']
     
     
