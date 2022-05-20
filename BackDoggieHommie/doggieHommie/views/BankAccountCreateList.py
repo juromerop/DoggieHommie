@@ -13,5 +13,7 @@ class BankAccountCreateListView(generics.ListCreateAPIView):
         user = self.kwargs['user']
         return BankAccounts.objects.filter(user=user)
     
+    #prueba
+    
     
     
