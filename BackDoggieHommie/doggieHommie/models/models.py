@@ -15,6 +15,7 @@ class User(models.Model):
     pais = models.CharField(max_length = 40)
     ciudad = models.CharField(max_length = 40)
     estado = models.CharField(max_length = 40)
+    number_banned = models.IntegerField( null = True)
     
     def __str__(self):
         return str(self.numero_documento)
@@ -110,7 +111,6 @@ class Functionality(models.Model):
 class BankAccounts(models.Model):
     bank_name = models.CharField(max_length = 120)
     account_number = models.CharField(max_length = 60)
-    #post =  models.ManyToManyField(Post,blank=True)
     user = models.ForeignKey(User, on_delete = models.CASCADE)
     bank_type = models.CharField(max_length = 40, null=True)
     
@@ -130,12 +130,9 @@ class Comment(models.Model):
     text = models.TextField()
     date = models.DateField()
     post = models.ForeignKey(Post, on_delete = models.CASCADE)
-    user = models.ForeignKey(User, on_delete = models.CASCADE)
-    
-
-    def __str__(self):
-        #return str(self.user + ": " + self.text )
-        pass
+    class Meta:
+        verbose_name = 'Comentario'
+        verbose_name_plural = "Comentarios"
     
 
 class Image(models.Model):
