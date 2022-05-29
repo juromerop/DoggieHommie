@@ -6,6 +6,9 @@ from rest_framework.response import Response
 from rest_framework.status import *
 from django.db import Error, transaction
 from datetime import datetime 
+from doggieHommie.services.FirebaseService import firebase
+import base64
+from time import time_ns
 
 
 
@@ -35,6 +38,18 @@ class PostCreateView(generics.GenericAPIView):
                 post["number_banned"] = 0
                 print(datetime.now().strftime("%Y-%m-%d"))
                 post["date"] = datetime.now().strftime("%Y-%m-%d")
+                imagenes = []
+                if "images" in post:
+                    for image in post["images"]: 
+                        extesion =  image["name"].split(".")[-1]
+                        file = base64.b64decode(image["data"])
+                        storage = firebase.storage()
+                        path = "post/" + str(time_ns()) + extesion
+                        fileInfo = storage.child(path).put(file)
+                        imagenes.append(storage.child(path).get_url(fileInfo["downloadTokens"]))
+                post["images"] = ",".join(imagenes)
+                                        
+                
                 reg = PostSerializer(data = post)
                 if reg.is_valid(raise_exception=True):
                     reg.save()

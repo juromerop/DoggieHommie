@@ -9,7 +9,7 @@ class UserCreateListView(generics.ListCreateAPIView):
     
     def post(self, resquest, *args, **kwargs):
         resquest.data["estado"] = "HABILITADO"
-        resquest.data["number_banned"] = 0
+        resquest.data["number_banned"] = 0  
         return super().post(resquest, *args, **kwargs)
     
         

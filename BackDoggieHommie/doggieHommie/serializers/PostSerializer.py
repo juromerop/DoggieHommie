@@ -20,7 +20,7 @@ class PostSerializer (serializers.ModelSerializer):
     class Meta:
         model = Post
         fields =  ['id','title', 'description', 'date', 'grade', 'isDonation', 'state', 'number_banned', 
-                   'user', 'bankAccounts', 'idBankAccount', 'userData']# 'comments', 'idComment']
+                   'user', 'bankAccounts', 'idBankAccount', 'userData', 'images']# 'comments', 'idComment']
     
     
         

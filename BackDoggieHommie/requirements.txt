@@ -8,3 +8,4 @@ djangorestframework-simplejwt==5.1.0
 Pillow==9.1.0
 django-cors-headers==3.11.0
 six==1.16.0
+pyrebase===3.0.27

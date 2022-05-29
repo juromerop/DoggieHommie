@@ -3,6 +3,8 @@ from rest_framework import generics
 from rest_framework.filters import SearchFilter, OrderingFilter
 from doggieHommie.serializers import CommentSerializer
 from doggieHommie.models import Comment
+from time import time_ns
+from datetime import datetime 
 
 
 class CommentCreateList(generics.ListCreateAPIView):
@@ -13,5 +15,6 @@ class CommentCreateList(generics.ListCreateAPIView):
     serializer_class = CommentSerializer
     
     
-    def post(self, resquest, *args, **kwargs):      
+    def post(self, resquest, *args, **kwargs):
+        resquest.data["date"] = datetime.now().strftime("%Y-%m-%d")      
         return super().post(resquest, *args, **kwargs)

@@ -125,6 +125,7 @@ class Post(models.Model):
     number_banned = models.IntegerField( null = True)
     user = models.ForeignKey(User, on_delete = models.CASCADE)
     bankAccounts = models.ManyToManyField(BankAccounts,blank = True)
+    images = models.TextField(null = True)
 
 class Comment(models.Model):
     text = models.TextField()
