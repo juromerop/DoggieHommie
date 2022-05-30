@@ -13,6 +13,7 @@ from time import time_ns
 
 
 class PostCreateView(generics.GenericAPIView):
+    serializer_class = PostSerializer
     
     def post(self, resquest, *args, **kwargs):
         data = resquest.data
