@@ -148,19 +148,12 @@ class Image(models.Model):
         #return str(self.name)
         pass
     
-    
 
-    
+class Image_field(models.Model):
+    image = models.ImageField(upload_to = 'images/')
 
-
-
-
-
-
-
-
-
-
-
-
-
+class Post_Image(models.Model):
+    post = models.ForeignKey(Post, on_delete = models.CASCADE)
+    image = models.ForeignKey(Image_field, on_delete = models.CASCADE)
+    def __str__(self):
+        return str(self.post)
