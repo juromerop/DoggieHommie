@@ -9,13 +9,19 @@ class PostRUDView(generics.RetrieveUpdateDestroyAPIView):
      
     def patch(self, request, pk):
         data = request.data
+        print(data)
         post = Post.objects.get(id = pk)
         if post != None:
-            data["number_banned"] = int(str(post.number_banned)) + 1
-            if int(data["number_banned"]) >= 3:
-                data["state"] = "BLOQUEADO"
+            if data["upvote"]:
+                data["grade"] = int(str(post.grade)) + 1
+
+
             else:
-                data["state"] = "HABILITADO"
+                data["number_banned"] = int(str(post.number_banned)) + 1
+                if int(data["number_banned"]) >= 3:
+                    data["state"] = "BLOQUEADO"
+                else:
+                    data["state"] = "HABILITADO"    
         return super().patch(request)
 
     
