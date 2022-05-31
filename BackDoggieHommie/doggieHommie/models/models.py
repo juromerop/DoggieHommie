@@ -109,11 +109,11 @@ class Functionality(models.Model):
 
 
 class BankAccounts(models.Model):
-    bank_name = models.CharField(max_length = 120)
+    BANK_NAMES = (("Nequi","Nequi"), ("Paypal","Paypal"), ("Daviplata" ,"Daviplata")) 
+    bank_name = models.CharField(max_length = 120, choices = BANK_NAMES)
     account_number = models.CharField(max_length = 60)
     user = models.ForeignKey(User, on_delete = models.CASCADE)
     bank_type = models.CharField(max_length = 40, null=True)
-    
 
 class Post(models.Model):
     title = models.CharField(max_length = 120)
@@ -148,19 +148,12 @@ class Image(models.Model):
         #return str(self.name)
         pass
     
-    
 
-    
+class Image_field(models.Model):
+    image = models.ImageField(upload_to = 'images/')
 
-
-
-
-
-
-
-
-
-
-
-
-
+class Post_Image(models.Model):
+    post = models.ForeignKey(Post, on_delete = models.CASCADE)
+    image = models.ForeignKey(Image_field, on_delete = models.CASCADE)
+    def __str__(self):
+        return str(self.post)

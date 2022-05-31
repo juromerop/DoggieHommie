@@ -10,9 +10,12 @@ class BankAccountCreateListView(generics.ListCreateAPIView):
     
     
     def get_queryset(self):
-        user = self.kwargs['user']
-        return BankAccounts.objects.filter(user=user)
-    
+        
+        user = self.kwargs.get('pk', None)
+        if user is not None:
+            return BankAccounts.objects.filter(user=user)
+        return BankAccounts.objects.all()
+        
     #prueba
     
     
