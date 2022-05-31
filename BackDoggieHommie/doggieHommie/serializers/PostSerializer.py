@@ -7,7 +7,7 @@ from .CommentSerializer import CommentSerializer
 
 class PostSerializer (serializers.ModelSerializer):
     bankAccounts = BankAccountSerializer(many=True, read_only=True)
-    #comments = CommentSerializer(many=True, read_only=True)
+    comments = CommentSerializer(many=True, read_only=True)
     userData = UserSerializer(read_only=True, source='user')
     user = serializers.PrimaryKeyRelatedField( write_only=True, queryset = User.objects.all())
     
@@ -20,7 +20,7 @@ class PostSerializer (serializers.ModelSerializer):
     class Meta:
         model = Post
         fields =  ['id','title', 'description', 'date', 'grade', 'isDonation', 'state', 'number_banned', 
-                   'user', 'bankAccounts', 'idBankAccount', 'userData', 'images']# 'comments', 'idComment']
+              'user', 'bankAccounts', 'idBankAccount', 'userData', 'images', 'comments']
     
     
         
