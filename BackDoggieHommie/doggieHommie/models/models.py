@@ -6,6 +6,7 @@ from turtle import title
 from django.db import models
 from django.contrib.auth.models import User
 
+
 #Se crea entidad usuario
 class User(models.Model):
     user = models.OneToOneField(
@@ -16,6 +17,7 @@ class User(models.Model):
     ciudad = models.CharField(max_length = 40)
     estado = models.CharField(max_length = 40)
     number_banned = models.IntegerField( null = True)
+
     
     def __str__(self):
         return str(self.numero_documento)
@@ -23,7 +25,45 @@ class User(models.Model):
     class Meta:
         verbose_name = 'Usuario'
         verbose_name_plural = "Usuarios"
+
+class BankAccounts(models.Model):
+    BANK_NAMES = (("Nequi","Nequi"), ("Paypal","Paypal"), ("Daviplata" ,"Daviplata")) 
+    bank_name = models.CharField(max_length = 120, choices = BANK_NAMES)
+    account_number = models.CharField(max_length = 60)
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
+    bank_type = models.CharField(max_length = 40, null=True)
+
+class Post(models.Model):
+    title = models.CharField(max_length = 120)
+    description = models.TextField()
+    date = models.DateField()
+    grade = models.IntegerField()
+    isDonation = models.BooleanField()
+    state = models.CharField(max_length = 20, null = True)
+    number_banned = models.IntegerField( null = True)
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
+    bankAccounts = models.ManyToManyField(BankAccounts,blank = True)
+    images = models.TextField(null = True)
+    likes =  models.ManyToManyField(User, blank = True ,through="PostsLiked",related_name="likes")
+    def __str__(self):
+        #return str(self.title)
+        pass
+
+    class Meta: 
+        pass
+
         
+class PostsLiked(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    date = models.DateField()
+
+    def __str__(self):
+        return "ok"
+        #return str(str(self.user) + "," + str(self.post))
+        
+    class Meta: 
+        pass
 
 #class Admin(models.Model):
 
@@ -91,41 +131,9 @@ class Functionality(models.Model):
         verbose_name_plural = "funcionalidades"
         
 
-# class Solicitud(models.Model):
-#     title = models.CharField(max_length=120)
-#     description = models.TextField()
-#     banksAccountList = models.
-#     telephoneList
-#      título, descripción, lista de cuentas bancarias, números celulares, fotos adjuntas, documentos adjuntos.  
-
-    
-
-    def __str__(self):
-        #return str(self.title)
-        pass
-    
-    class Meta: 
-        pass
-
-
-class BankAccounts(models.Model):
-    BANK_NAMES = (("Nequi","Nequi"), ("Paypal","Paypal"), ("Daviplata" ,"Daviplata")) 
-    bank_name = models.CharField(max_length = 120, choices = BANK_NAMES)
-    account_number = models.CharField(max_length = 60)
-    user = models.ForeignKey(User, on_delete = models.CASCADE)
-    bank_type = models.CharField(max_length = 40, null=True)
-
-class Post(models.Model):
-    title = models.CharField(max_length = 120)
-    description = models.TextField()
-    date = models.DateField()
-    grade = models.IntegerField()
-    isDonation = models.BooleanField()
-    state = models.CharField(max_length = 20, null = True)
-    number_banned = models.IntegerField( null = True)
-    user = models.ForeignKey(User, on_delete = models.CASCADE)
-    bankAccounts = models.ManyToManyField(BankAccounts,blank = True)
-    images = models.TextField(null = True)
+# class likedPosts(models.Model):
+#     post = models.ForeignKey(Post, on_delete=models.CASCADE)
+#     date = models.DateField()
 
 class Comment(models.Model):
     text = models.TextField()
