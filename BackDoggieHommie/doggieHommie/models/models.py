@@ -109,7 +109,7 @@ class Functionality(models.Model):
 
 
 class BankAccounts(models.Model):
-    BANK_NAMES = (("NQ","Nequi"), ("PP","Paypal"), ("DP" ,"Daviplata")) 
+    BANK_NAMES = (("Nequi","Nequi"), ("Paypal","Paypal"), ("Daviplata" ,"Daviplata")) 
     bank_name = models.CharField(max_length = 120, choices = BANK_NAMES)
     account_number = models.CharField(max_length = 60)
     user = models.ForeignKey(User, on_delete = models.CASCADE)
