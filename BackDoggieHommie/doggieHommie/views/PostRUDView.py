@@ -20,7 +20,7 @@ class PostRUDView(generics.RetrieveUpdateDestroyAPIView):
 
         if post != None:
 
-            if data["upvote"]:
+            if (data["action"] == "upvote"):
                 userID = int(data["userID"])
                 curUser = User.objects.get(id = userID)
 
@@ -43,12 +43,16 @@ class PostRUDView(generics.RetrieveUpdateDestroyAPIView):
                     # return answer
 
 
-            else:
+            elif((data["action"] == "report")):
                 data["number_banned"] = int(str(post.number_banned)) + 1
                 if int(data["number_banned"]) >= 3:
                     data["state"] = "BLOQUEADO"
                 else:
                     data["state"] = "HABILITADO"    
+                
+                print("done")
+                answer = Response(data={ "mensaje":"Se ha reportado la publicación", }, status=200)
+
 
         response = super().patch(request)
         return answer
