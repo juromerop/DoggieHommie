@@ -14,8 +14,6 @@ class PostSerializer (serializers.ModelSerializer):
     
     idBankAccount = serializers.PrimaryKeyRelatedField( write_only=True, queryset =BankAccounts.objects.all(),
                                                        source='bankAccounts', many = True )
-   # idComment= serializers.PrimaryKeyRelatedField( write_only=True, queryset =Comment.objects.all(),
-    #                                                   source='comments', many = True )
         
     class Meta:
         model = Post

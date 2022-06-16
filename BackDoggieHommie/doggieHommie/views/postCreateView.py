@@ -41,14 +41,17 @@ class PostCreateView(generics.GenericAPIView):
                 post["date"] = datetime.now().strftime("%Y-%m-%d")
                 imagenes = []
                 if "images" in post:
-                    for image in post["images"]: 
-                        extesion =  image["name"].split(".")[-1]
-                        file = base64.b64decode(image["data"])
-                        storage = firebase.storage()
-                        path = "post/" + str(time_ns()) + extesion
-                        fileInfo = storage.child(path).put(file)
-                        imagenes.append(storage.child(path).get_url(fileInfo["downloadTokens"]))
-                post["images"] = ",".join(imagenes)
+                    if post["images"] != []:
+                        for image in post["images"]: 
+                            extesion =  image["name"].split(".")[-1]
+                            file = base64.b64decode(image["data"])
+                            storage = firebase.storage()
+                            path = "post/" + str(time_ns()) + extesion
+                            fileInfo = storage.child(path).put(file)
+                            imagenes.append(storage.child(path).get_url(fileInfo["downloadTokens"]))
+                        post["images"] = ",".join(imagenes)
+                    else:
+                        post["images"] = None
                                         
                 
                 reg = PostSerializer(data = post)

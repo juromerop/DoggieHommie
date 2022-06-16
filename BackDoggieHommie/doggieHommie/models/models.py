@@ -43,7 +43,7 @@ class Post(models.Model):
     number_banned = models.IntegerField( null = True)
     user = models.ForeignKey(User, on_delete = models.CASCADE)
     bankAccounts = models.ManyToManyField(BankAccounts,blank = True)
-    images = models.TextField(blank = True)
+    images = models.TextField(blank = True, null = True)
     likes =  models.ManyToManyField(User, blank = True ,through="PostsLiked",related_name="likes")
     def __str__(self):
         #return str(self.title)
@@ -139,6 +139,7 @@ class Comment(models.Model):
     text = models.TextField()
     date = models.DateField()
     post = models.ForeignKey(Post, on_delete = models.CASCADE, related_name='comments')
+    user = models.ForeignKey(User, on_delete = models.CASCADE, related_name='comments', null = True)
     class Meta:
         verbose_name = 'Comentario'
         verbose_name_plural = "Comentarios"
