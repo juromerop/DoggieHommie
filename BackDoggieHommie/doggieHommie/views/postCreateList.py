@@ -6,7 +6,7 @@ from doggieHommie.models import Post
 
 
 class PostCreateListView(generics.ListCreateAPIView):
-    queryset = Post.objects.filter(state = "HABILITADO")
+    queryset = Post.objects.filter(state = "HABILITADO", state_user = "ACTIVO")
     filter_backends = [SearchFilter, OrderingFilter]
     ordering_fields = ['date', 'grade']
     ordering = ['-date','-grade']

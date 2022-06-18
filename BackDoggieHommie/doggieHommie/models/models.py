@@ -45,6 +45,7 @@ class Post(models.Model):
     bankAccounts = models.ManyToManyField(BankAccounts,blank = True)
     images = models.TextField(blank = True, null = True)
     likes =  models.ManyToManyField(User, blank = True ,through="PostsLiked",related_name="likes")
+    state_user = models.CharField(max_length = 20, null = True)
     def __str__(self):
         #return str(self.title)
         pass
@@ -166,3 +167,11 @@ class Post_Image(models.Model):
     image = models.ForeignKey(Image_field, on_delete = models.CASCADE)
     def __str__(self):
         return str(self.post)
+    
+class Notification(models.Model):
+    text = models.TextField(null=True, blank=True)
+    date = models.DateField(null=True, blank=True)
+    user = models.ForeignKey(User, on_delete = models.CASCADE,null=True, blank=True)
+    post = models.ForeignKey(Post, on_delete = models.CASCADE,null=True, blank=True)
+    def __str__(self):
+        return str(self.text)

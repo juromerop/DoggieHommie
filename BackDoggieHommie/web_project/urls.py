@@ -22,6 +22,7 @@ urlpatterns = [
     path('post/getByUser/<int:user>', PostByUserView.as_view()),
     path('comment/create', CommentCreateList.as_view()),
     path('user/report/<int:pk>', UserRUDView.as_view()),
+    path('post/deshabilitar/<int:pk>', PostUpdateView.as_view()),
+    path('notification/getAll/<int:user>',  NotificationListView.as_view()),
     # path('upvotePost', UserRUDView.as_view()),
-
 ]

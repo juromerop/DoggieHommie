@@ -37,6 +37,7 @@ class PostCreateView(generics.GenericAPIView):
                 post["idBankAccount"] = accounts
                 post["state"] = "HABILITADO"
                 post["number_banned"] = 0
+                post["state_user"] = "ACTIVO"
                 print(datetime.now().strftime("%Y-%m-%d"))
                 post["date"] = datetime.now().strftime("%Y-%m-%d")
                 imagenes = []
