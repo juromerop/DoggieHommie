@@ -9,6 +9,9 @@ class LoginSerializer (TokenObtainPairSerializer):
         userApp = User.objects.get(user=self.user)
         data["idUser"] = userApp.id
         data["nombreUser"] = self.user.first_name
+        data["telefono"] = userApp.telefono
+        data["email"] = self.user.username
+        data["active"] = self.user.is_active
         data["lastLogin"] = self.user.last_login
         update_last_login(None, self.user)
         return data
